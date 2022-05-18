@@ -4,14 +4,14 @@ data "oci_identity_availability_domains" "ad_list" {
 
 data "template_file" "ad_names" {
   count    = length(data.oci_identity_availability_domains.ad_list.availability_domains)
-  template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[count.index], "name")
 # template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[count.index], "name")
+  template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[count.index], "name")
 }
 
 data "template_file" "ad_worker_names" {
   count = length(var.freetier_worker_ad_list)
-  template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[(var.freetier_worker_ad_list[count.index] % length(data.oci_identity_availability_domains.ad_list.availability_domains))], "name")
-# template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[(var.freetier_worker_ad_list[count.index] -1)], "name")
+# template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[(var.freetier_worker_ad_list[count.index] % length(data.oci_identity_availability_domains.ad_list.availability_domains))], "name")
+  template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[(var.freetier_worker_ad_list[count.index] -1)], "name")
 }
 
 data "oci_core_images" "images" {
@@ -19,7 +19,8 @@ data "oci_core_images" "images" {
 }
 
 data "oci_identity_compartment" "default" {
-  id = var.compartment_id
+  id            = var.compartment_id
+# enable_delete = true
 }
 
 data "template_file" "externaldb_template" {

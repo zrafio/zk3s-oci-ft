@@ -4,6 +4,7 @@ resource "random_password" "cluster_token" {
 
 
 resource "oci_core_instance" "server" {
+# availability_domain = element(local.server_ad_names, var.freetier_server_ad_list)
   availability_domain = element(local.server_ad_names, (var.freetier_server_ad_list - 1))
   compartment_id      = var.compartment_id
   shape               = "VM.Standard.E2.1.Micro"
