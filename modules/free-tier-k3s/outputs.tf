@@ -1,5 +1,6 @@
 output "sqlpassword" {
-  value = random_password.sqlpassword.result
+  value     = random_password.sqlpassword.result
+  sensitive = true
 }
 
 output "k3s-api-ip" {
