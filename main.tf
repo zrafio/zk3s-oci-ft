@@ -5,7 +5,7 @@ module "free-tier-k3s" {
   project_name   = "Zk3s"
   region         = var.region
   compartment_id = "ocid1.tenancy.oc1..aaaaaaaawpshfykz5jkgfj7hbxnqbrwttldpvhlhjiwu2ubrd6gxr364iomq"
-  ssh_public_key = file("~/.oci/sessions/kubernetes/oci_api_key.pem")
+# ssh_public_key = file("~/.oci/sessions/kubernetes/oci_api_key.pem")
 # ssh_public_key = file("~/.oci/ssh_key_public.pem")
 
   # Network
