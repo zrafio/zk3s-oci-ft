@@ -4,7 +4,6 @@ data "oci_identity_availability_domains" "ad_list" {
 
 data "template_file" "ad_names" {
   count    = length(data.oci_identity_availability_domains.ad_list.availability_domains)
-# template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[count.index], "name")
   template = lookup(data.oci_identity_availability_domains.ad_list.availability_domains[count.index], "name")
 }
 
